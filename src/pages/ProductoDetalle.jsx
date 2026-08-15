@@ -93,8 +93,8 @@ export default function ProductoDetalle() {
                   key={img.id}
                   onClick={() => setImagenActiva(img)}
                   className={`w-16 h-16 rounded-card overflow-hidden border-2 transition-all duration-150 hover:scale-105 ${imagenActiva?.id === img.id
-                      ? 'border-signal'
-                      : 'border-transparent dark:border-graphite-700'
+                    ? 'border-signal'
+                    : 'border-transparent dark:border-graphite-700'
                     }`}
                 >
                   <img src={img.url} alt="" className="w-full h-full object-cover" />
@@ -133,8 +133,8 @@ export default function ProductoDetalle() {
                     onClick={() => setColorSeleccionado(v.color)}
                     disabled={v.stock <= 0}
                     className={`text-sm px-3 py-1.5 rounded-card border transition-all duration-150 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 ${colorSeleccionado === v.color
-                        ? 'bg-graphite-800 dark:bg-white text-white dark:text-graphite-900 border-graphite-800 dark:border-white'
-                        : 'border-graphite-100 dark:border-graphite-700 text-graphite-600 dark:text-graphite-300 hover:border-graphite-400 dark:hover:border-graphite-500'
+                      ? 'bg-graphite-800 dark:bg-white text-white dark:text-graphite-900 border-graphite-800 dark:border-white'
+                      : 'border-graphite-100 dark:border-graphite-700 text-graphite-600 dark:text-graphite-300 hover:border-graphite-400 dark:hover:border-graphite-500'
                       }`}
                   >
                     {v.color} {v.stock <= 0 && '(agotado)'}
@@ -156,7 +156,7 @@ export default function ProductoDetalle() {
           )}
 
           <a
-            href={`https://wa.me/?text=${encodeURIComponent(
+            href={`https://wa.me/50496804671?text=${encodeURIComponent(
               `Hola, me interesa: ${producto.nombre} (${producto.modelo ?? ''}) ${colorSeleccionado ? `color ${colorSeleccionado}` : ''
               }`
             )}`}
