@@ -1,0 +1,126 @@
+/* ══════════════════════════════════════
+   VARIABLES DE TEMA — social sidebar
+   Se ajustan solas según la clase .dark en <html>
+══════════════════════════════════════ */
+:root {
+    --social-line: rgba(0, 0, 0, 0.15);
+    --social-icon-border: rgba(38, 38, 44, 0.35);
+    --social-icon-color: rgba(38, 38, 44, 0.55);
+    --social-icon-bg: rgba(0, 0, 0, 0.04);
+    --social-icon-bg-hover: rgba(0, 0, 0, 0.06);
+    --social-tooltip-bg: rgba(255, 255, 255, 0.97);
+    --social-tooltip-color: #3d3d45;
+    --social-tooltip-border: rgba(0, 0, 0, 0.08);
+}
+
+html.dark {
+    --social-line: rgba(255, 255, 255, 0.2);
+    --social-icon-border: rgba(243, 222, 222, 0.45);
+    --social-icon-color: rgba(243, 222, 222, 0.45);
+    --social-icon-bg: rgba(255, 255, 255, 0.05);
+    --social-icon-bg-hover: rgba(255, 255, 255, 0.09);
+    --social-tooltip-bg: rgba(22, 24, 30, 0.95);
+    --social-tooltip-color: #c7bbbb;
+    --social-tooltip-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ══════════════════════════════════════
+   SOCIAL SIDEBAR
+══════════════════════════════════════ */
+.social-sidebar {
+    position: fixed;
+    left: 24px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 900;
+}
+
+/* ── Líneas decorativas ── */
+.social-line-top,
+.social-line-bottom {
+    width: 1px;
+    background: var(--social-line);
+    transition: background 0.2s ease;
+}
+
+.social-line-top {
+    height: 60px;
+}
+
+.social-line-bottom {
+    height: 80px;
+}
+
+/* ── Icono ── */
+.social-icon-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--social-icon-border);
+    background: var(--social-icon-bg);
+    color: var(--social-icon-color);
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.social-icon-wrap:hover,
+.social-hovered {
+    color: var(--brand-color);
+    background: var(--social-icon-bg-hover);
+    border-color: var(--brand-color);
+    transform: translateY(-2px);
+}
+
+/* ── Tooltip ── */
+.social-tooltip {
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--social-tooltip-bg);
+    color: var(--social-tooltip-color);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+    border: 1px solid var(--social-tooltip-border);
+    letter-spacing: 0.02em;
+}
+
+/* Flechita del tooltip */
+.social-tooltip::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: var(--social-tooltip-border);
+}
+
+.social-icon-wrap:hover .social-tooltip,
+.social-hovered .social-tooltip {
+    opacity: 1;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — ocultar en móvil
+══════════════════════════════════════ */
+@media (max-width: 767px) {
+    .social-sidebar {
+        display: none;
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "tienda-accesorios",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.19",
+    "babel-plugin-react-compiler": "^19.0.0-beta-8a03594-20241020",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.19",
+    "vite": "^6.0.1"
+  }
+}
