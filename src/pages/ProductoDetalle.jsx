@@ -157,8 +157,13 @@ export default function ProductoDetalle() {
 
           <a
             href={`https://wa.me/50496804671?text=${encodeURIComponent(
-              `Hola, me interesa: ${producto.nombre} (${producto.modelo ?? ''}) ${colorSeleccionado ? `color ${colorSeleccionado}` : ''
-              }`
+              [
+                `Hola, me interesa: ${producto.nombre}`,
+                producto.modelo ? `(${producto.modelo})` : null,
+                colorSeleccionado ? `color ${colorSeleccionado}` : null,
+              ]
+                .filter(Boolean)
+                .join(' ')
             )}`}
             target="_blank"
             rel="noreferrer"
