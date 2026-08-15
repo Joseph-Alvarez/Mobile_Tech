@@ -161,6 +161,7 @@ export default function ProductoDetalle() {
                 `Hola, me interesa: ${producto.nombre}`,
                 producto.modelo ? `(${producto.modelo})` : null,
                 colorSeleccionado ? `color ${colorSeleccionado}` : null,
+                `${window.location.origin}/producto/${producto.id}`,
               ]
                 .filter(Boolean)
                 .join(' ')
