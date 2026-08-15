@@ -1,0 +1,15 @@
+{
+    "rewrites": [
+        {
+            "source": "/producto/:id",
+            "has": [
+                {
+                    "type": "header",
+                    "key": "user-agent",
+                    "value": ".*(facebookexternalhit|WhatsApp|Twitterbot|Slackbot|TelegramBot|LinkedInBot|Discordbot).*"
+                }
+            ],
+            "destination": "/api/og?id=:id"
+        }
+    ]
+}
