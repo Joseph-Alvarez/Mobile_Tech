@@ -17,7 +17,7 @@ con **React Router** para las rutas, ya que Vite no trae ruteo por carpetas como
 ## 2. Configurar el proyecto
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env
 ```
 
@@ -25,7 +25,7 @@ Edita `.env` y pega tu URL y anon key de Supabase (deben empezar con `VITE_`, es
 variables al navegador).
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Abre la URL que te muestre la terminal (normalmente `http://localhost:5173`) para el catálogo, y

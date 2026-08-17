@@ -31,7 +31,7 @@ importers:
         specifier: ^10.4.19
         version: 10.5.4(postcss@8.5.26)
       babel-plugin-react-compiler:
-        specifier: ^19.0.0-beta-8a03594-20241020
+        specifier: 19.0.0-beta-ebf51a3-20250411
         version: 19.0.0-beta-ebf51a3-20250411
       postcss:
         specifier: ^8.4.39
