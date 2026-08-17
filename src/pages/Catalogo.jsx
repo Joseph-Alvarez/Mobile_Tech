@@ -187,7 +187,7 @@ export default function Catalogo() {
                 onClick={() => setCategoriaActiva(null)}
                 className={`text-xs font-medium px-3.5 py-1.5 rounded-card border transition-all duration-200 hover:scale-105 active:scale-95 ${categoriaActiva === null
                   ? 'bg-graphite-900 dark:bg-white text-white dark:text-graphite-900 border-graphite-900 dark:border-white shadow-sm'
-                  : 'border-graphite-100 dark:border-graphite-700 text-graphite-600 dark:text-graphite-300 hover:border-graphite-400 dark:hover:border-graphite-500 hover:-translate-y-px'
+                  : 'border-graphite-100 dark:border-graphite-600 text-graphite-600 dark:text-graphite-200 hover:border-graphite-400 dark:hover:border-graphite-400 hover:-translate-y-px'
                   }`}
               >
                 Todas
@@ -202,11 +202,11 @@ export default function Catalogo() {
                     onClick={() => setCategoriaActiva(cat.id)}
                     className={`text-xs font-medium px-3.5 py-1.5 rounded-card border transition-all duration-200 hover:scale-105 active:scale-95 ${activa
                       ? `${color.bg} text-white ${color.border} shadow-sm`
-                      : `border-graphite-100 dark:border-graphite-700 text-graphite-600 dark:text-graphite-300 ${color.hoverBorder} ${color.hoverText} hover:-translate-y-px`
+                      : `border-graphite-100 dark:border-graphite-600 text-graphite-600 dark:text-graphite-200 ${color.hoverBorder} ${color.hoverText} hover:-translate-y-px`
                       }`}
                   >
                     {cat.nombre}
-                    <span className={`ml-1.5 ${activa ? 'text-white/70' : 'text-graphite-400'}`}>
+                    <span className={`ml-1.5 ${activa ? 'text-white/70' : 'text-graphite-400 dark:text-graphite-400'}`}>
                       {contarPorCategoria(cat.id)}
                     </span>
                   </button>
