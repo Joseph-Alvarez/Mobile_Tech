@@ -7,6 +7,7 @@ import AdminLogin from './pages/admin/AdminLogin.jsx';
 import AdminProductos from './pages/admin/AdminProductos.jsx';
 import NuevoProducto from './pages/admin/NuevoProducto.jsx';
 import EditarProducto from './pages/admin/EditarProducto.jsx';
+import WhatsAppButton from './components/WhatsappButton.jsx';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/admin/productos/:id/editar" element={<EditarProducto />} />
         </Routes>
       </main>
+      <WhatsAppButton />
     </BrowserRouter>
   );
 }

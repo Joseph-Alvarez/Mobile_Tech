@@ -16,6 +16,10 @@ export default function ProductoForm({ productoExistente }) {
   const [descripcion, setDescripcion] = useState(productoExistente?.descripcion ?? '');
   const [precioBase, setPrecioBase] = useState(String(productoExistente?.precio_base ?? ''));
   const [activo, setActivo] = useState(productoExistente?.activo ?? true);
+  // PARTE NUEVA
+  const [mostrarNuevaCategoria, setMostrarNuevaCategoria] = useState(false);
+  const [nuevaCategoriaNombre, setNuevaCategoriaNombre] = useState('');
+  const [creandoCategoria, setCreandoCategoria] = useState(false);
 
   const [variantes, setVariantes] = useState(
     productoExistente?.variantes?.map((v) => ({
@@ -57,6 +61,28 @@ export default function ProductoForm({ productoExistente }) {
 
   function quitarVariante(index) {
     setVariantes((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  // PARTE NUEVA
+  async function crearCategoria() {
+    if (!nuevaCategoriaNombre.trim()) return;
+    setCreandoCategoria(true);
+    const { data, error: errCategoria } = await supabase
+      .from('categorias')
+      .insert({ nombre: nuevaCategoriaNombre.trim() })
+      .select()
+      .single();
+    setCreandoCategoria(false);
+
+    if (errCategoria) {
+      setError('No se pudo crear la categoría: ' + errCategoria.message);
+      return;
+    }
+
+    setCategorias((prev) => [...prev, data].sort((a, b) => a.nombre.localeCompare(b.nombre)));
+    setCategoriaId(data.id);
+    setNuevaCategoriaNombre('');
+    setMostrarNuevaCategoria(false);
   }
 
   function agregarImagenesDesdeArchivos(files) {
@@ -178,7 +204,7 @@ export default function ProductoForm({ productoExistente }) {
       }
 
       navigate('/admin/productos');
-      
+
     } catch (err) {
       setError(err.message ?? 'Ocurrió un error al guardar.');
     } finally {
@@ -224,8 +250,15 @@ export default function ProductoForm({ productoExistente }) {
           <div>
             <label className="block text-xs font-medium text-graphite-600 mb-1">Categoría</label>
             <select
-              value={categoriaId}
-              onChange={(e) => setCategoriaId(e.target.value)}
+              value={mostrarNuevaCategoria ? '__nueva__' : categoriaId}
+              onChange={(e) => {
+                if (e.target.value === '__nueva__') {
+                  setMostrarNuevaCategoria(true);
+                } else {
+                  setMostrarNuevaCategoria(false);
+                  setCategoriaId(e.target.value);
+                }
+              }}
               className="w-full border border-graphite-100 rounded-card px-3 py-2 text-sm"
             >
               <option value="">Sin categoría</option>
@@ -234,7 +267,38 @@ export default function ProductoForm({ productoExistente }) {
                   {c.nombre}
                 </option>
               ))}
+              <option value="__nueva__">+ Nueva categoría…</option>
             </select>
+
+            {mostrarNuevaCategoria && (
+              <div className="flex items-center gap-2 mt-2">
+                <input
+                  value={nuevaCategoriaNombre}
+                  onChange={(e) => setNuevaCategoriaNombre(e.target.value)}
+                  placeholder="Nombre de la categoría"
+                  className="flex-1 border border-graphite-100 rounded-card px-3 py-2 text-sm"
+                  autoFocus
+                />
+                <button
+                  type="button"
+                  onClick={crearCategoria}
+                  disabled={creandoCategoria}
+                  className="text-xs font-medium bg-signal text-white px-3 py-2 rounded-card disabled:opacity-50"
+                >
+                  {creandoCategoria ? 'Creando…' : 'Agregar'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMostrarNuevaCategoria(false);
+                    setNuevaCategoriaNombre('');
+                  }}
+                  className="text-xs text-graphite-400 px-2"
+                >
+                  Cancelar
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -335,7 +399,7 @@ export default function ProductoForm({ productoExistente }) {
             type="file"
             accept="image/*"
             multiple
-            capture="environment"
+            // capture="environment"
             className="hidden"
             onChange={(e) => agregarImagenesDesdeArchivos(e.target.files)}
           />
@@ -351,11 +415,10 @@ export default function ProductoForm({ productoExistente }) {
                   <button
                     type="button"
                     onClick={() => marcarPrincipal(index)}
-                    className={`w-full text-[11px] font-medium py-1 rounded-card ${
-                      img.es_principal
-                        ? 'bg-signal text-white'
-                        : 'bg-graphite-50 text-graphite-600'
-                    }`}
+                    className={`w-full text-[11px] font-medium py-1 rounded-card ${img.es_principal
+                      ? 'bg-signal text-white'
+                      : 'bg-graphite-50 text-graphite-600'
+                      }`}
                   >
                     {img.es_principal ? 'Principal' : 'Marcar principal'}
                   </button>

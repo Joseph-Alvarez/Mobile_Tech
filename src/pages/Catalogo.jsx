@@ -66,6 +66,7 @@ export default function Catalogo() {
   const [categorias, setCategorias] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState(null);
   const [cargando, setCargando] = useState(true);
+  const [busqueda, setBusqueda] = useState('');
 
   useEffect(() => {
     async function cargarDatos() {
@@ -87,9 +88,17 @@ export default function Catalogo() {
     cargarDatos();
   }, []);
 
-  const productosFiltrados = categoriaActiva
-    ? productos.filter((p) => p.categoria_id === categoriaActiva)
-    : productos;
+  const productosFiltrados = productos
+    .filter((p) => (categoriaActiva ? p.categoria_id === categoriaActiva : true))
+    .filter((p) => {
+      if (!busqueda.trim()) return true;
+      const q = busqueda.trim().toLowerCase();
+      return (
+        p.nombre.toLowerCase().includes(q) ||
+        (p.modelo ?? '').toLowerCase().includes(q) ||
+        (p.descripcion ?? '').toLowerCase().includes(q)
+      );
+    });
 
   const contarPorCategoria = (catId) =>
     productos.filter((p) => p.categoria_id === catId).length;
@@ -135,6 +144,31 @@ export default function Catalogo() {
         <div className="absolute top-20 -left-20 w-72 h-72 rounded-full bg-signal-200 dark:bg-signal-500/10 opacity-40 dark:opacity-100 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-signal-100 dark:bg-purple-500/10 opacity-50 dark:opacity-60 blur-3xl pointer-events-none" />
         <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full bg-graphite-100 dark:bg-emerald-500/10 opacity-30 dark:opacity-40 blur-3xl pointer-events-none" />
+
+        {/* NUEVA FUNCION LUPA */}
+        <div className="relative mb-6">
+          <svg
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-graphite-300 dark:text-graphite-500 pointer-events-none"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          <input
+            type="text"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            placeholder="Buscar productos…"
+            className="w-full pl-9 pr-3 py-2.5 text-sm border border-graphite-100 dark:border-graphite-700 dark:bg-graphite-900 dark:text-white rounded-card focus:outline-none focus:border-signal-500 transition-colors"
+          />
+        </div>
+
+
 
         <div className="relative max-w-6xl mx-auto px-5 py-10">
           {/* Categorías */}
@@ -199,10 +233,14 @@ export default function Catalogo() {
                 </svg>
               </div>
               <p className="text-graphite-700 dark:text-graphite-200 text-sm font-semibold mb-1">
-                Todavía no hay productos {categoriaActiva ? 'en esta categoría' : 'publicados'}
+                {busqueda.trim()
+                  ? `Sin resultados para "${busqueda}"`
+                  : `Todavía no hay productos ${categoriaActiva ? 'en esta categoría' : 'publicados'}`}
               </p>
               <p className="text-graphite-400 text-xs">
-                Vuelve pronto, estamos agregando nuevos accesorios.
+                {busqueda.trim()
+                  ? 'Intenta con otra palabra o revisa la ortografía.'
+                  : 'Vuelve pronto, estamos agregando nuevos accesorios.'}
               </p>
             </div>
           )}
