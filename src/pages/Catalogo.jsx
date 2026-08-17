@@ -145,32 +145,41 @@ export default function Catalogo() {
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-signal-100 dark:bg-purple-500/10 opacity-50 dark:opacity-60 blur-3xl pointer-events-none" />
         <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full bg-graphite-100 dark:bg-emerald-500/10 opacity-30 dark:opacity-40 blur-3xl pointer-events-none" />
 
-        {/* NUEVA FUNCION LUPA */}
-        <div className="relative mb-6">
-          <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-graphite-300 dark:text-graphite-500 pointer-events-none"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="7" />
-            <path d="M21 21l-4.3-4.3" />
-          </svg>
-          <input
-            type="text"
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-            placeholder="Buscar productos…"
-            className="w-full pl-9 pr-3 py-2.5 text-sm border border-graphite-100 dark:border-graphite-700 dark:bg-graphite-900 dark:text-white rounded-card focus:outline-none focus:border-signal-500 transition-colors"
-          />
-        </div>
-
-
-
         <div className="relative max-w-6xl mx-auto px-5 py-10">
+          {/* Buscador — con sombra y foco en color signal */}
+          <div className="relative mb-8">
+            <svg
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-graphite-300 dark:text-graphite-500 pointer-events-none"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+            <input
+              type="text"
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
+              placeholder="Buscar productos…"
+              className="w-full pl-11 pr-11 py-3.5 text-sm bg-white dark:bg-graphite-900 dark:text-white border border-graphite-100 dark:border-graphite-700 rounded-card shadow-lg shadow-graphite-900/5 dark:shadow-black/20 focus:outline-none focus:border-signal-500 focus:ring-2 focus:ring-signal-500/20 transition-all"
+            />
+            {busqueda && (
+              <button
+                onClick={() => setBusqueda('')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-graphite-300 hover:text-graphite-600 dark:hover:text-graphite-300 transition-colors"
+                aria-label="Limpiar búsqueda"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
+
           {/* Categorías */}
           {categorias.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-8">
