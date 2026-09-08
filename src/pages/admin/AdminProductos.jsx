@@ -77,53 +77,55 @@ function ListaProductosAdmin() {
           return (
             <div
               key={producto.id}
-              className="flex items-center gap-4 border border-graphite-100 dark:border-graphite-800 rounded-card p-3 bg-white dark:bg-graphite-900"
+              className="flex flex-wrap sm:flex-nowrap items-center gap-3 border border-graphite-100 dark:border-graphite-800 rounded-card p-3 bg-white dark:bg-graphite-900"
             >
               <div className="w-16 h-16 rounded-card overflow-hidden bg-graphite-50 dark:bg-graphite-800 shrink-0">
                 {principal ? <img src={principal.url} alt="" className="w-full h-full object-cover" /> : null}
               </div>
 
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-[140px]">
                 <p className="font-medium text-graphite-800 dark:text-graphite-100 truncate">{producto.nombre}</p>
-                <p className="text-xs text-graphite-400 font-mono">
+                <p className="text-xs text-graphite-400 font-mono truncate">
                   {producto.modelo} · {producto.categorias?.nombre ?? 'Sin categoría'}
                 </p>
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 order-3 sm:order-none">
                 <span className="text-xs text-graphite-400 font-mono">L</span>
                 <input
                   type="number"
                   step="0.01"
                   defaultValue={producto.precio_base}
                   onBlur={(e) => actualizarPrecio(producto.id, parseFloat(e.target.value) || 0)}
-                  className="w-24 border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-2 py-1.5 text-sm font-mono"
+                  className="w-20 sm:w-24 border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-2 py-1.5 text-sm font-mono"
                 />
               </div>
 
-              <button
-                onClick={() => alternarActivo(producto)}
-                className={`text-xs font-medium px-3 py-1.5 rounded-card border transition-colors whitespace-nowrap ${producto.activo
+              <div className="flex items-center gap-2 w-full sm:w-auto order-4 sm:order-none">
+                <button
+                  onClick={() => alternarActivo(producto)}
+                  className={`text-xs font-medium px-3 py-1.5 rounded-card border transition-colors whitespace-nowrap ${producto.activo
                     ? 'border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/20'
                     : 'border-graphite-100 dark:border-graphite-700 text-graphite-400'
-                  }`}
-              >
-                {producto.activo ? 'Visible' : 'Oculto'}
-              </button>
+                    }`}
+                >
+                  {producto.activo ? 'Visible' : 'Oculto'}
+                </button>
 
-              <Link
-                to={`/admin/productos/${producto.id}/editar`}
-                className="text-xs font-medium px-3 py-1.5 rounded-card border border-graphite-100 dark:border-graphite-700 text-graphite-800 dark:text-graphite-200 hover:border-graphite-400 dark:hover:border-graphite-500 transition-colors"
-              >
-                Editar
-              </Link>
+                <Link
+                  to={`/admin/productos/${producto.id}/editar`}
+                  className="text-xs font-medium px-3 py-1.5 rounded-card border border-graphite-100 dark:border-graphite-700 text-graphite-800 dark:text-graphite-200 hover:border-graphite-400 dark:hover:border-graphite-500 transition-colors whitespace-nowrap"
+                >
+                  Editar
+                </Link>
 
-              <button
-                onClick={() => eliminarProducto(producto.id)}
-                className="text-xs font-medium px-3 py-1.5 rounded-card border border-graphite-100 dark:border-graphite-700 text-graphite-400 hover:border-signal hover:text-signal transition-colors"
-              >
-                Eliminar
-              </button>
+                <button
+                  onClick={() => eliminarProducto(producto.id)}
+                  className="text-xs font-medium px-3 py-1.5 rounded-card border border-graphite-100 dark:border-graphite-700 text-graphite-400 hover:border-signal hover:text-signal transition-colors whitespace-nowrap"
+                >
+                  Eliminar
+                </button>
+              </div>
             </div>
           );
         })}

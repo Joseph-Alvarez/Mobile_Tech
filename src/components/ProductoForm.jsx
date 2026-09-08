@@ -643,7 +643,7 @@ export default function ProductoForm({ productoExistente }) {
         className="space-y-8 max-w-2xl"
       >
         {error && (
-          <div className="bg-signal-50 border border-signal-100 text-signal-600 text-sm rounded-card px-4 py-3">
+          <div className="bg-signal-50 dark:bg-signal-900/20 border border-signal-100 dark:border-signal-800 text-signal-600 dark:text-signal-400 text-sm rounded-card px-4 py-3">
             {error}
           </div>
         )}
@@ -658,7 +658,7 @@ export default function ProductoForm({ productoExistente }) {
           </h2>
 
           <div>
-            <label className="block text-xs font-medium text-graphite-600 mb-1">
+            <label className="block text-xs font-medium text-graphite-600 dark:text-graphite-300 mb-1">
               Nombre *
             </label>
 
@@ -668,7 +668,7 @@ export default function ProductoForm({ productoExistente }) {
                 setNombre(e.target.value)
               }
               required
-              className="w-full border border-graphite-100 rounded-card px-3 py-2 text-sm"
+              className="w-full border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
               placeholder="Holder 360° Cel-Tablet"
             />
           </div>
@@ -677,7 +677,7 @@ export default function ProductoForm({ productoExistente }) {
             {/* MODELO */}
 
             <div>
-              <label className="block text-xs font-medium text-graphite-600 mb-1">
+              <label className="block text-xs font-medium text-graphite-600 dark:text-graphite-300 mb-1">
                 Modelo / SKU
               </label>
 
@@ -686,7 +686,7 @@ export default function ProductoForm({ productoExistente }) {
                 onChange={(e) =>
                   setModelo(e.target.value)
                 }
-                className="w-full border border-graphite-100 rounded-card px-3 py-2 text-sm font-mono"
+                className="w-full border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm font-mono placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
                 placeholder="L-382"
               />
             </div>
@@ -694,7 +694,7 @@ export default function ProductoForm({ productoExistente }) {
             {/* CATEGORÍA */}
 
             <div>
-              <label className="block text-xs font-medium text-graphite-600 mb-1">
+              <label className="block text-xs font-medium text-graphite-600 dark:text-graphite-300 mb-1">
                 Categoría
               </label>
 
@@ -721,7 +721,7 @@ export default function ProductoForm({ productoExistente }) {
                     );
                   }
                 }}
-                className="w-full border border-graphite-100 rounded-card px-3 py-2 text-sm"
+                className="w-full border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm"
               >
                 <option value="">
                   Sin categoría
@@ -748,7 +748,7 @@ export default function ProductoForm({ productoExistente }) {
                     true
                   )
                 }
-                className="mt-2 text-xs font-medium text-graphite-500 hover:text-signal transition-colors"
+                className="mt-2 text-xs font-medium text-graphite-500 dark:text-graphite-400 hover:text-signal transition-colors"
               >
                 ⚙ Gestionar categorías
               </button>
@@ -767,7 +767,7 @@ export default function ProductoForm({ productoExistente }) {
                       )
                     }
                     placeholder="Nombre de la categoría"
-                    className="flex-1 border border-graphite-100 rounded-card px-3 py-2 text-sm"
+                    className="flex-1 border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
                     autoFocus
                   />
 
@@ -808,7 +808,7 @@ export default function ProductoForm({ productoExistente }) {
           {/* PRECIO */}
 
           <div>
-            <label className="block text-xs font-medium text-graphite-600 mb-1">
+            <label className="block text-xs font-medium text-graphite-600 dark:text-graphite-300 mb-1">
               Precio base (L) *
             </label>
 
@@ -820,7 +820,7 @@ export default function ProductoForm({ productoExistente }) {
                 setPrecioBase(e.target.value)
               }
               required
-              className="w-full border border-graphite-100 rounded-card px-3 py-2 text-sm font-mono"
+              className="w-full border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm font-mono placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
               placeholder="450.00"
             />
           </div>
@@ -828,7 +828,7 @@ export default function ProductoForm({ productoExistente }) {
           {/* DESCRIPCIÓN */}
 
           <div>
-            <label className="block text-xs font-medium text-graphite-600 mb-1">
+            <label className="block text-xs font-medium text-graphite-600 dark:text-graphite-300 mb-1">
               Descripción
             </label>
 
@@ -838,14 +838,14 @@ export default function ProductoForm({ productoExistente }) {
                 setDescripcion(e.target.value)
               }
               rows={4}
-              className="w-full border border-graphite-100 rounded-card px-3 py-2 text-sm"
+              className="w-full border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
               placeholder="Portable y plegable, regulación multiángulo, material metálico…"
             />
           </div>
 
           {/* ACTIVO */}
 
-          <label className="flex items-center gap-2 text-sm text-graphite-600">
+          <label className="flex items-center gap-2 text-sm text-graphite-600 dark:text-graphite-300">
             <input
               type="checkbox"
               checked={activo}
@@ -899,7 +899,7 @@ export default function ProductoForm({ productoExistente }) {
                   )
                 }
                 placeholder="Color (ej. Negro)"
-                className="flex-1 border border-graphite-100 rounded-card px-3 py-2 text-sm"
+                className="flex-1 border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
               />
 
               <input
@@ -913,7 +913,7 @@ export default function ProductoForm({ productoExistente }) {
                   )
                 }
                 placeholder="Stock"
-                className="w-24 border border-graphite-100 rounded-card px-3 py-2 text-sm font-mono"
+                className="w-24 border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm font-mono placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
               />
 
               <input
@@ -928,7 +928,7 @@ export default function ProductoForm({ productoExistente }) {
                   )
                 }
                 placeholder="Precio (opc.)"
-                className="w-28 border border-graphite-100 rounded-card px-3 py-2 text-sm font-mono"
+                className="w-28 border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-3 py-2 text-sm font-mono placeholder:text-graphite-400 dark:placeholder:text-graphite-500"
               />
 
               <button
@@ -953,8 +953,8 @@ export default function ProductoForm({ productoExistente }) {
             Imágenes
           </h2>
 
-          <label className="block border border-dashed border-graphite-100 rounded-card py-6 text-center cursor-pointer hover:border-signal transition-colors">
-            <span className="text-sm text-graphite-600">
+          <label className="block border border-dashed border-graphite-100 dark:border-graphite-700 rounded-card py-6 text-center cursor-pointer hover:border-signal transition-colors">
+            <span className="text-sm text-graphite-600 dark:text-graphite-300">
               Toca para subir fotos
             </span>
 
@@ -977,7 +977,7 @@ export default function ProductoForm({ productoExistente }) {
                 (img, index) => (
                   <div
                     key={index}
-                    className="relative border border-graphite-100 rounded-card overflow-hidden"
+                    className="relative border border-graphite-100 dark:border-graphite-700 rounded-card overflow-hidden"
                   >
                     <img
                       src={img.url}
@@ -985,7 +985,7 @@ export default function ProductoForm({ productoExistente }) {
                       className="w-full aspect-square object-cover"
                     />
 
-                    <div className="p-2 space-y-1 bg-white">
+                    <div className="p-2 space-y-1 bg-white dark:bg-graphite-800">
                       <button
                         type="button"
                         onClick={() =>
@@ -995,7 +995,7 @@ export default function ProductoForm({ productoExistente }) {
                         }
                         className={`w-full text-[11px] font-medium py-1 rounded-card ${img.es_principal
                           ? 'bg-signal text-white'
-                          : 'bg-graphite-50 text-graphite-600'
+                          : 'bg-graphite-50 dark:bg-graphite-700 text-graphite-600 dark:text-graphite-300'
                           }`}
                       >
                         {img.es_principal
@@ -1029,7 +1029,7 @@ export default function ProductoForm({ productoExistente }) {
                                   )
                               )
                             }
-                            className="w-full text-[11px] border border-graphite-100 rounded-card px-1 py-1"
+                            className="w-full text-[11px] border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-1 py-1"
                           >
                             <option value="">
                               General
@@ -1098,7 +1098,7 @@ export default function ProductoForm({ productoExistente }) {
             onClick={() =>
               navigate('/admin/productos')
             }
-            className="text-sm font-medium px-5 py-2.5 rounded-card border border-graphite-100"
+            className="text-sm font-medium px-5 py-2.5 rounded-card border border-graphite-100 dark:border-graphite-700 text-graphite-800 dark:text-graphite-200 hover:border-graphite-400 dark:hover:border-graphite-500 transition-colors"
           >
             Cancelar
           </button>
@@ -1119,12 +1119,12 @@ export default function ProductoForm({ productoExistente }) {
             }
           }}
         >
-          <div className="w-full max-w-md bg-white rounded-card shadow-2xl p-5">
+          <div className="w-full max-w-md bg-white dark:bg-graphite-900 rounded-card shadow-2xl p-5">
             {/* CABECERA */}
 
             <div className="flex items-center justify-between mb-5">
               <div>
-                <h2 className="text-base font-semibold text-graphite-800">
+                <h2 className="text-base font-semibold text-graphite-800 dark:text-white">
                   Gestionar categorías
                 </h2>
 
@@ -1141,7 +1141,7 @@ export default function ProductoForm({ productoExistente }) {
                   );
                   cancelarEdicionCategoria();
                 }}
-                className="text-graphite-400 hover:text-graphite-700 text-lg"
+                className="text-graphite-400 hover:text-graphite-700 dark:hover:text-graphite-200 text-lg"
               >
                 ✕
               </button>
@@ -1150,7 +1150,7 @@ export default function ProductoForm({ productoExistente }) {
             {/* ERROR DENTRO DEL MODAL */}
 
             {error && (
-              <div className="mb-4 bg-signal-50 border border-signal-100 text-signal-600 text-xs rounded-card px-3 py-2">
+              <div className="mb-4 bg-signal-50 dark:bg-signal-900/20 border border-signal-100 dark:border-signal-800 text-signal-600 dark:text-signal-400 text-xs rounded-card px-3 py-2">
                 {error}
               </div>
             )}
@@ -1162,7 +1162,7 @@ export default function ProductoForm({ productoExistente }) {
                 (categoria) => (
                   <div
                     key={categoria.id}
-                    className="flex items-center justify-between gap-3 border border-graphite-100 rounded-card px-3 py-2"
+                    className="flex items-center justify-between gap-3 border border-graphite-100 dark:border-graphite-700 rounded-card px-3 py-2"
                   >
                     {categoriaEditando?.id ===
                       categoria.id ? (
@@ -1193,7 +1193,7 @@ export default function ProductoForm({ productoExistente }) {
                             }
                           }}
                           autoFocus
-                          className="flex-1 border border-graphite-100 rounded-card px-2 py-1.5 text-sm focus:outline-none focus:border-signal"
+                          className="flex-1 border border-graphite-100 dark:border-graphite-700 bg-white dark:bg-graphite-800 text-graphite-900 dark:text-white rounded-card px-2 py-1.5 text-sm focus:outline-none focus:border-signal"
                         />
 
                         <button
@@ -1219,14 +1219,14 @@ export default function ProductoForm({ productoExistente }) {
                           disabled={
                             guardandoCategoria
                           }
-                          className="text-xs text-graphite-400 hover:text-graphite-600"
+                          className="text-xs text-graphite-400 hover:text-graphite-600 dark:hover:text-graphite-300"
                         >
                           Cancelar
                         </button>
                       </>
                     ) : (
                       <>
-                        <span className="text-sm text-graphite-700 truncate">
+                        <span className="text-sm text-graphite-700 dark:text-graphite-200 truncate">
                           {categoria.nombre}
                         </span>
 
@@ -1286,7 +1286,7 @@ export default function ProductoForm({ productoExistente }) {
                   );
                   cancelarEdicionCategoria();
                 }}
-                className="text-sm font-medium px-4 py-2 rounded-card border border-graphite-100 hover:bg-graphite-50 transition-colors"
+                className="text-sm font-medium px-4 py-2 rounded-card border border-graphite-100 dark:border-graphite-700 text-graphite-800 dark:text-graphite-200 hover:bg-graphite-50 dark:hover:bg-graphite-800 transition-colors"
               >
                 Cerrar
               </button>
@@ -1308,8 +1308,8 @@ export default function ProductoForm({ productoExistente }) {
             }
           }}
         >
-          <div className="w-full max-w-sm bg-white rounded-card shadow-2xl p-5">
-            <div className="w-11 h-11 mb-4 rounded-card bg-signal-50 flex items-center justify-center text-signal-600">
+          <div className="w-full max-w-sm bg-white dark:bg-graphite-900 rounded-card shadow-2xl p-5">
+            <div className="w-11 h-11 mb-4 rounded-card bg-signal-50 dark:bg-signal-900/20 flex items-center justify-center text-signal-600 dark:text-signal-400">
               <svg
                 width="20"
                 height="20"
@@ -1326,7 +1326,7 @@ export default function ProductoForm({ productoExistente }) {
               </svg>
             </div>
 
-            <h2 className="text-base font-semibold text-graphite-800 mb-1">
+            <h2 className="text-base font-semibold text-graphite-800 dark:text-white mb-1">
               ¿Eliminar "{categoriaAEliminar.nombre}"?
             </h2>
 
@@ -1351,7 +1351,7 @@ export default function ProductoForm({ productoExistente }) {
                 type="button"
                 onClick={cancelarEliminarCategoria}
                 disabled={eliminandoCategoria}
-                className="flex-1 text-sm font-medium py-2.5 rounded-card border border-graphite-100 hover:bg-graphite-50 transition-colors disabled:opacity-50"
+                className="flex-1 text-sm font-medium py-2.5 rounded-card border border-graphite-100 dark:border-graphite-700 text-graphite-800 dark:text-graphite-200 hover:bg-graphite-50 dark:hover:bg-graphite-800 transition-colors disabled:opacity-50"
               >
                 Cancelar
               </button>
