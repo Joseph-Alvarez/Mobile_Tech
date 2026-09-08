@@ -3,23 +3,24 @@ import '../assets/SocialLinks.css';
 
 const SOCIAL_LINKS = [
     {
-        href: ' ',
-        icon: 'fa-brands fa-facebook',
-        label: 'Facebook',
-        color: '#1877f2',
-    },
-    {
         href: 'https://wa.me/50496804671',
         icon: 'fa-brands fa-whatsapp',
         label: 'WhatsApp',
         color: '#25d366',
     },
     {
-        href: ' ',
-        icon: 'fa-brands fa-instagram',
-        label: 'Instagram',
-        color: '#e1306c',
+        href: 'https://www.facebook.com/share/19V1SB8JhD/',
+        icon: 'fa-brands fa-facebook',
+        label: 'Facebook',
+        color: '#1877f2',
     },
+
+    // {
+    //     href: ' ',
+    //     icon: 'fa-brands fa-instagram',
+    //     label: 'Instagram',
+    //     color: '#e1306c',
+    // },
 ];
 
 const SocialLinks = () => {
