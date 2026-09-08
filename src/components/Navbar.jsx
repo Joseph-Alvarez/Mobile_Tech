@@ -28,12 +28,12 @@ export default function Navbar() {
           >
             Catálogo
           </Link>
-          <Link
+          {/* <Link
             to="/admin"
             className="text-[11px] sm:text-xs font-mono px-2.5 sm:px-3 py-1.5 rounded-card border border-graphite-100 dark:border-graphite-700 hover:border-signal hover:text-signal transition-colors whitespace-nowrap"
           >
             Panel admin
-          </Link>
+          </Link> */}
           <ThemeToggle />
         </nav>
       </div>
