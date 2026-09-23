@@ -1,7 +1,35 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle.jsx';
+import { Heart } from 'lucide-react';
+import { obtenerLikes, ajustarLikes } from '../lib/likes.js';
 
 export default function Navbar() {
+  const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState(null);
+
+  useEffect(() => {
+    setLiked(localStorage.getItem('liked_catalogo') === 'true');
+
+    obtenerLikes()
+      .then(setLikes)
+      .catch(() => setLikes(null));
+  }, []);
+
+  const handleLike = async () => {
+    const nextLiked = !liked;
+    setLiked(nextLiked);
+    setLikes((prev) => (prev === null ? prev : prev + (nextLiked ? 1 : -1)));
+    localStorage.setItem('liked_catalogo', String(nextLiked));
+
+    try {
+      const nuevoTotal = await ajustarLikes(nextLiked ? 1 : -1);
+      setLikes(nuevoTotal);
+    } catch {
+      // si falla la red, dejamos el valor optimista; no es crítico para este caso
+    }
+  };
+
   return (
     <header className="border-b border-graphite-100 dark:border-graphite-800 bg-paper dark:bg-graphite-950 sticky top-0 z-30 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-5 h-16 flex items-center justify-between gap-3">
@@ -28,6 +56,22 @@ export default function Navbar() {
           >
             Catálogo
           </Link>
+
+          <button
+            onClick={handleLike}
+            aria-pressed={liked}
+            aria-label={liked ? 'Quitar me gusta' : 'Me gusta'}
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-card border transition-colors whitespace-nowrap ${liked
+                ? 'border-signal-500 text-signal-500 bg-signal-500/10'
+                : 'border-graphite-100 dark:border-graphite-700 hover:border-signal hover:text-signal'
+              }`}
+          >
+            <Heart size={14} className={liked ? 'fill-signal-500' : ''} />
+            {likes !== null && (
+              <span className="text-[11px] sm:text-xs font-mono">{likes}</span>
+            )}
+          </button>
+
           {/* <Link
             to="/admin"
             className="text-[11px] sm:text-xs font-mono px-2.5 sm:px-3 py-1.5 rounded-card border border-graphite-100 dark:border-graphite-700 hover:border-signal hover:text-signal transition-colors whitespace-nowrap"

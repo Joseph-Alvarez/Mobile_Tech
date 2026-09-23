@@ -69,10 +69,6 @@ export default function AdminLogin() {
         </button>
       </form>
 
-      <p className="text-xs text-graphite-400 mt-6">
-        Tu usuario se crea desde el dashboard de Supabase en Authentication → Users. No hay registro
-        público.
-      </p>
     </div>
   );
 }
